@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "wordguess"
+version = "0.1.0"
+description = "An interactive web application to solve word puzzles like Wordle."
+authors = ["Martin Wilsdorf <de.marwils@gmail.com>"]
+license = "Apache License 2.0"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
