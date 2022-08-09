@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "An interactive web application to solve word puzzles like Wordle."
 authors = ["Martin Wilsdorf <de.marwils@gmail.com>"]
 license = "Apache License 2.0"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
