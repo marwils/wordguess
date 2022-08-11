@@ -14,5 +14,5 @@ class Word(models.Model):
     wordlist = models.ForeignKey(
         Wordlist, on_delete=models.CASCADE, related_name="words"
     )
-    word = models.CharField(max_length=100)
+    word = models.CharField(max_length=100, unique=True)
     rating = models.IntegerField(null=True)
