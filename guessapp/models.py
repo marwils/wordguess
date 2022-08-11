@@ -15,4 +15,4 @@ class Word(models.Model):
         Wordlist, on_delete=models.CASCADE, related_name="words"
     )
     word = models.CharField(max_length=100, unique=True)
-    rating = models.IntegerField(null=True)
+    rating = models.IntegerField()
