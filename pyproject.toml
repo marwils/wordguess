@@ -10,6 +10,7 @@ readme = "README.md"
 python = "^3.10"
 Django = "^4.1"
 python-dotenv = "^0.20.0"
+dj-database-url = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.5.2"

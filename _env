@@ -1,1 +1,9 @@
-SECRET_KEY="Django Secret Key"
+DEBUG = False
+
+SECRET_KEY = "Django Secret Key"
+
+TIME_ZONE = "UTC"
+
+DB_URL = "sqlite:///db.sqlite3"
+# DB_URL="mysql://username:password@localhost/database"
+# DB_URL="postgres://username:password@localhost/database"
