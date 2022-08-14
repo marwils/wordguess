@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 import pytest
 
 from guessapp.importer import WordlistImporter
@@ -18,12 +19,16 @@ def test_filter_word_length():
 def test_importer():
     lines = ["abc", "def", "abcdefghi", "ghi", "feg", "leg", "jklmnopqr", "abcjklstu"]
     importer = WordlistImporter(lines)
-    importer.persist("Test words")
+    persisted_count = importer.persist("Test words")
 
-    assert Word.objects.count() == 8
+    assert Word.objects.count() == len(lines)
+    assert persisted_count == len(lines)
 
     word = Word.objects.filter(word__length=3).order_by("-rating").first().word
     assert word == "feg"
 
     word = Word.objects.filter(word__length=9).order_by("-rating").first().word
     assert word == "abcjklstu"
+
+    with pytest.raises(IntegrityError):
+        importer.persist("Test words")

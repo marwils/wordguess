@@ -1,4 +1,6 @@
 from collections import defaultdict
+
+from django.db import transaction
 from guessapp.models import Wordlist
 
 
@@ -21,12 +23,18 @@ class WordlistImporter:
             if is_word:
                 self._wordlist_raters[word_len].add(word.lower())
 
-    def persist(self, name: str):
+    @transaction.atomic
+    def persist(self, name: str) -> int:
         wordlist = Wordlist.objects.create(name=name)
+        word_count = 0
+
         for rater in self._wordlist_raters.values():
             for word in rater.words:
                 wordlist.words.create(word=word, rating=rater.rate(word))
+                word_count += 1
         wordlist.save()
+
+        return word_count
 
 
 class WordlistRater:
